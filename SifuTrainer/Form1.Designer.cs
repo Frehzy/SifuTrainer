@@ -75,13 +75,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(395, 116);
             this.Controls.Add(this.GetScoreButton);
             this.Controls.Add(this.ScoreLabel);
             this.Controls.Add(this.SetScoreButton);
             this.Controls.Add(this.ScoreTextBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SifuTrainer [v1.7]";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
