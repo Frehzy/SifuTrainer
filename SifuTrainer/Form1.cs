@@ -18,7 +18,7 @@ public partial class Form1 : Form
     private void Form1_Load(object sender, EventArgs e)
     {
         _memory = new(GetProcessByName("Sifu-Win64-Shipping"));
-        _baseAddress = _memory.GetBaseAddress(0x05AEB4F0);
+        _baseAddress = _memory.GetBaseAddress(0x05AD7820);
     }
 
     private Process GetProcessByName(string processName)
