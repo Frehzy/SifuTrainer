@@ -26,16 +26,18 @@ public partial class Form1 : Form
         var sifu = Process.GetProcessesByName(processName).FirstOrDefault();
         return sifu is not null
                ? sifu
-               : throw new NullReferenceException("Process cant found");
+               : throw new NullReferenceException("Process not found.");
     }
 
     private void SetScoreButton_Click(object sender, EventArgs e)
     {
         if (int.TryParse(ScoreTextBox.Text, out var score) is false)
-            throw new ArgumentException("Score must be type Int");
+            throw new ArgumentException("Score must be type Int.");
 
         _scoreAddress = Utils.OffsetCalculator(_memory, _baseAddress, Offsets._score);
-        _memory.WriteMemory(_scoreAddress, (float)score);
+
+        if (_memory.WriteMemory(_scoreAddress, (float)score) is false)
+            MessageBox.Show("Score has not been changed.");
     }
 
     private void GetScoreButton_Click(object sender, EventArgs e)
