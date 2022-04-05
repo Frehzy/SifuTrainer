@@ -8,15 +8,11 @@ public class MemoryHelper32
 {
     private readonly Process _process;
 
-    public MemoryHelper32(Process TargetProcess)
-    {
+    public MemoryHelper32(Process TargetProcess) =>
         _process = TargetProcess;
-    }
 
-    public uint GetBaseAddress(uint StartingAddress)
-    {
-        return (uint)_process.MainModule.BaseAddress + StartingAddress;
-    }
+    public uint GetBaseAddress(uint StartingAddress) =>
+        (uint)_process.MainModule.BaseAddress + StartingAddress;
 
     public byte[] ReadMemoryBytes(uint MemoryAddress, uint Bytes)
     {
@@ -40,11 +36,9 @@ public class MemoryHelper32
 
     public bool WriteMemory<T>(uint MemoryAddress, T Value)
     {
-        IntPtr bw = IntPtr.Zero;
-
         int sz = ObjectType.GetSize<T>();
         byte[] data = ObjectType.GetBytes(Value);
-        bool result = WriteProcessMemory(_process.Handle, MemoryAddress, data, sz, out bw);
+        bool result = WriteProcessMemory(_process.Handle, MemoryAddress, data, sz, out IntPtr bw);
         return result && bw != IntPtr.Zero;
     }
 

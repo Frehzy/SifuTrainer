@@ -36,11 +36,9 @@ public class MemoryHelper64
 
     public bool WriteMemory<T>(ulong MemoryAddress, T Value)
     {
-        IntPtr bw = IntPtr.Zero;
-
         int sz = ObjectType.GetSize<T>();
         byte[] data = ObjectType.GetBytes(Value);
-        bool result = WriteProcessMemory(_process.Handle, MemoryAddress, data, sz, out bw);
+        bool result = WriteProcessMemory(_process.Handle, MemoryAddress, data, sz, out IntPtr bw);
         return result && bw != IntPtr.Zero;
     }
 
